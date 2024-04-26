@@ -42,7 +42,7 @@ nicknames = []
 
 # Sending Messages To All Connected Clients
 
-def broadcast(message,sender):                                            #<<==========================
+def broadcast(message,sender):                                            #<<========================== MODIFICATION
 
     for client in clients:
 
@@ -60,7 +60,7 @@ def broadcast(message,sender):                                            #<<===
 
 # Handling Messages From Clients
 
-def handle(client,address):                                                #<<==========================
+def handle(client,address):                                                #<<========================== MODIFICATION
 
     while True:
 
@@ -70,9 +70,9 @@ def handle(client,address):                                                #<<==
 
             message = client.recv(1024)
 
-            broadcast(message,client)                                     #<<==========================
+            broadcast(message,client)                                     #<<========================== MODIFICATION
 
-            print(f'{address} sent a message')                            #<<==========================
+            print(f'{address} sent a message')                            #<<========================== MODIFICATION
 
         except:
 
@@ -86,7 +86,7 @@ def handle(client,address):                                                #<<==
 
             nickname = nicknames[index]
 
-            broadcast('{} left!'.format(nickname).encode('ascii'),client)  #<<==========================
+            broadcast('{} left!'.format(nickname).encode('ascii'),client)  #<<========================== MODIFICATION
 
             nicknames.remove(nickname)
 
@@ -124,7 +124,7 @@ def receive():
 
         print("Nickname is {}".format(nickname))
 
-        broadcast("{} joined!".format(nickname).encode('ascii'),client)   #<<==========================
+        broadcast("{} joined!".format(nickname).encode('ascii'),client)   #<<========================== MODIFICATION
 
         client.send('Connected to server!'.encode('ascii'))
 
@@ -132,7 +132,7 @@ def receive():
 
         # Start Handling Thread For Client
 
-        thread = threading.Thread(target=handle, args=(client,address))   #<<==========================
+        thread = threading.Thread(target=handle, args=(client,address))   #<<========================== MODIFICATION
 
         thread.start()
 
